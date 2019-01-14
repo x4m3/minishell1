@@ -3,6 +3,9 @@
 
 mysh
 
+### build directory ###
+build
+
 ### vim auto-completion ###
 .clang_complete
 
