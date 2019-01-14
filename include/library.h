@@ -8,4 +8,8 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
+int len_str(const char *str);
+int putput(char *str, ...);
+int putput_err(char *str, ...);
+
 #endif

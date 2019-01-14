@@ -12,9 +12,12 @@ CFLAGS += -Wall -Wextra -Iinclude
 LDFLAGS +=
 CC = cc
 
-INC = include/mysh.h include/library.h
+INC = include/mysh.h include/library.h include/config.h include/colors.h
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)
 SRC = source/mysh.c \
+      library/len_str.c \
+      library/putput.c \
+      library/putput_err.c \
 
 all: options $(BINARY)
 
