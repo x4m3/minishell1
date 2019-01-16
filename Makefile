@@ -18,6 +18,7 @@ SRC = source/mysh.c \
       library/len_str.c \
       library/putput.c \
       library/putput_err.c \
+      library/str_to_word_array.c \
 
 all: options $(BINARY)
 

@@ -11,5 +11,6 @@
 int len_str(const char *str);
 int putput(char *str, ...);
 int putput_err(char *str, ...);
+char **str_to_word_array(const char *str, const char sep);
 
 #endif
