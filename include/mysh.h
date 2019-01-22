@@ -10,12 +10,4 @@
 
 #include "library.h"
 
-#ifndef EXIT_OKAY
-#define EXIT_OKAY (0)
-#endif
-
-#ifndef EXIT_ERROR
-#define EXIT_ERROR (84)
-#endif
-
 #endif
