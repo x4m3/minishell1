@@ -18,11 +18,6 @@ void check_return(int *status)
     (WIFEXITED(*status)) ? putput("OK\n") : putput("nope\n");
 }
 
-void exec(char **command)
-{
-    execve(command[0], command, NULL);
-}
-
 int fork_exec(char **command, int *status)
 {
     pid_t child = fork();;
@@ -30,7 +25,7 @@ int fork_exec(char **command, int *status)
         perror("failed to fork");
         return 1;
     }
-    (child == 0) ? exec(command) : 0;
+    (child == 0) ? execve(command[0], command, NULL) : 0;
     waitpid(child, status, 0);
     return 0;
 }
