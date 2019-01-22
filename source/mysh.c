@@ -20,12 +20,13 @@ void check_return(int *status)
 
 int fork_exec(char **command, int *status)
 {
-    pid_t child = fork();;
-    if (child == -1) {
-        perror("failed to fork");
-        return 1;
+    pid_t parent = getpid();
+    pid_t child = fork();
+
+    if (parent != getpid()) {
+        execve(command[0], command, NULL);
+        exit(0);
     }
-    (child == 0) ? execve(command[0], command, NULL) : 0;
     waitpid(child, status, 0);
     return 0;
 }
@@ -58,8 +59,8 @@ int mysh(void)
         }
         check_return(&status);
         free_char_arr(command);
+        free(input_command);
     }
-    free(input_command);
     return 0;
 }
 
