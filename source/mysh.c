@@ -31,7 +31,8 @@ int fork_exec(char **command, int *status)
         return 1;
     }
     (child == 0) ? exec(command) : 0;
-    if (waitpid(child, status, 0) > 0);
+    if (waitpid(child, status, 0) > 0) {
+    }
     return 0;
 }
 
@@ -54,7 +55,7 @@ int mysh(void)
         input_command = prompt_get_input();
         if (input_command == NULL) {
             putput("exit\n");
-            break;
+            return 0;
         }
         command = str_to_word_array(input_command, ' ');
         if (fork_exec(command, &status) != 0) {
