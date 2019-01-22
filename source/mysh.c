@@ -31,8 +31,7 @@ int fork_exec(char **command, int *status)
         return 1;
     }
     (child == 0) ? exec(command) : 0;
-    if (waitpid(child, status, 0) > 0) {
-    }
+    waitpid(child, status, 0);
     return 0;
 }
 
