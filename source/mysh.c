@@ -15,7 +15,7 @@
 
 void check_return(int *status)
 {
-    (WIFEXITED(*status)) ? putput("OK\n") : putput("nope\n");
+    (WIFEXITED(*status)) ? 0 : putput("segmentation fault (core dumped)\n");
 }
 
 int fork_exec(char **command, int *status)
