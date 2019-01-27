@@ -12,6 +12,11 @@ CFLAGS += -Wall -Wextra -Iinclude
 LDFLAGS +=
 CC = cc
 
+DEBUG ?= 0
+ifeq ($(DEBUG), 1)
+    CFLAGS += -g
+endif
+
 INC = include/mysh.h \
       include/library.h \
       include/config.h \
