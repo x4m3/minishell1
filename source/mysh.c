@@ -10,7 +10,6 @@
 #include <unistd.h> /* for execve */
 #include <sys/wait.h> /* for waitpid */
 #include "mysh.h"
-#include "config.h"
 #include "colors.h"
 
 void check_return(int *status)
@@ -36,7 +35,7 @@ char *prompt_get_input(void)
 {
     char *input_command;
 
-    putput("%s%s%s ", c_bold_green, prompt, c_reset);
+    putput("%s%s%s ", c_bold_green, "$", c_reset);
     input_command = get_next_line(0);
     return input_command;
 }
