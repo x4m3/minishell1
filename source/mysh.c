@@ -81,23 +81,23 @@ t_colors *init_t_colors(void)
     return colors;
 }
 
-int mysh(char **env)
+int mysh(char **env, t_colors *colors)
 {
-    t_colors *colors = init_t_colors();
-
-    if (!colors)
-        return -1;
     while (1) {
         if (loop(colors, env) == -1)
             return 0;
     }
-    free(colors);
     return 0;
 }
 
 int main(int ac, char **env)
 {
-    if (ac != 1 || mysh(env) != 0)
+    t_colors *colors = init_t_colors();
+    int ret = 0;
+
+    ret = (ac != 1 || !colors || mysh(env, colors) != 0) ? 84 : 0;
+    free(colors);
+    if (ret == 84)
         return 84;
     return 0;
 }
