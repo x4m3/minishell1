@@ -29,9 +29,9 @@ SRC = source/mysh.c \
       library/putput.c \
       library/putput_err.c \
       library/str_to_word_array.c \
-      library/get_next_line.c \
       library/free_char_arr.c \
       library/str_compare.c \
+      library/gnl_stdin.c \
 
 all: options $(BINARY)
 

@@ -21,6 +21,6 @@ char *prompt_get_input(t_colors *colors, int *status)
     char *input_command;
 
     disp_prompt(colors, *status);
-    input_command = get_next_line(0);
+    input_command = gnl_stdin();
     return input_command;
 }
