@@ -68,19 +68,6 @@ int loop(t_colors *colors, char **env)
     return 0;
 }
 
-t_colors *init_t_colors(void)
-{
-    t_colors *colors = malloc(sizeof(t_colors));
-
-    if (!colors)
-        return NULL;
-    colors->reset = "\033[0m";
-    colors->bold_red = "\033[1;31m";
-    colors->bold_green = "\033[1;32m";
-    colors->current = colors->bold_green;
-    return colors;
-}
-
 int mysh(char **env, t_colors *colors)
 {
     while (1) {

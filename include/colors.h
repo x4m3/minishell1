@@ -17,4 +17,6 @@ struct s_colors {
     char *bold_green;
 };
 
+t_colors *init_t_colors(void);
+
 #endif
