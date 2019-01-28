@@ -30,7 +30,7 @@ int fork_exec(char **command, int *status, char **env)
     if (parent != getpid()) {
         if (execve(command[0], command, env) == -1) {
             putput("command not found\n");
-        exit(0);
+            exit(0);
         }
     }
     waitpid(child, status, 0);
