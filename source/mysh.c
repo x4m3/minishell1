@@ -24,7 +24,8 @@ int fork_exec(char **command, int *status)
     pid_t child = fork();
 
     if (parent != getpid()) {
-        execve(command[0], command, NULL);
+        if (execve(command[0], command, NULL) == -1)
+            putput("command not found\n");
         exit(0);
     }
     waitpid(child, status, 0);
