@@ -23,6 +23,7 @@ INC = include/mysh.h \
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)
 SRC = source/mysh.c \
       source/init_t_colors.c \
+      source/prompt.c \
       library/len_str.c \
       library/putput.c \
       library/putput_err.c \

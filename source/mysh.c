@@ -10,7 +10,6 @@
 #include <unistd.h> /* for execve */
 #include <sys/wait.h> /* for waitpid */
 #include "mysh.h"
-#include "colors.h"
 
 void check_return(int *status, t_colors *colors)
 {
@@ -35,15 +34,6 @@ int fork_exec(char **command, int *status, char **env)
     }
     waitpid(child, status, 0);
     return 0;
-}
-
-char *prompt_get_input(t_colors *colors)
-{
-    char *input_command;
-
-    putput("%s%s%s ", colors->current, "$", colors->reset);
-    input_command = get_next_line(0);
-    return input_command;
 }
 
 int loop(t_colors *colors, char **env)
