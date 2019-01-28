@@ -7,7 +7,7 @@
 
 #include "mysh.h"
 
-void prompt(t_colors *colors)
+void disp_prompt(t_colors *colors)
 {
     putput("%s", colors->current);
     putput("%s", "$");
@@ -19,7 +19,7 @@ char *prompt_get_input(t_colors *colors)
 {
     char *input_command;
 
-    prompt(colors);
+    disp_prompt(colors);
     input_command = get_next_line(0);
     return input_command;
 }
