@@ -19,8 +19,7 @@ endif
 
 INC = include/mysh.h \
       include/library.h \
-      include/colors.h \
-      include/get_next_line.h
+      include/colors.h
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)
 SRC = source/mysh.c \
       library/len_str.c \

@@ -8,7 +8,7 @@
 #include <stddef.h> /* for NULL */
 #include <unistd.h> /* for read */
 #include <stdlib.h> /* for malloc, free */
-#include "get_next_line.h"
+#include "library.h"
 
 int count_str_buf(char *buf, char *str)
 {
