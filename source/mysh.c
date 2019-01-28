@@ -18,13 +18,13 @@ void check_return(int *status)
     (WIFEXITED(*status)) ? 0 : putput("segmentation fault (core dumped)\n");
 }
 
-int fork_exec(char **command, int *status)
+int fork_exec(char **command, int *status, char **env)
 {
     pid_t parent = getpid();
     pid_t child = fork();
 
     if (parent != getpid()) {
-        if (execve(command[0], command, NULL) == -1)
+        if (execve(command[0], command, env) == -1)
             putput("command not found\n");
         exit(0);
     }
@@ -41,7 +41,7 @@ char *prompt_get_input(void)
     return input_command;
 }
 
-int mysh(void)
+int mysh(char **env)
 {
     char *input_command;
     char **command;
@@ -54,7 +54,7 @@ int mysh(void)
             return 0;
         }
         command = str_to_word_array(input_command, ' ');
-        if (fork_exec(command, &status) != 0) {
+        if (fork_exec(command, &status, env) != 0) {
             perror("error! aborting.\n");
             return 1;
         }
@@ -65,9 +65,9 @@ int mysh(void)
     return 0;
 }
 
-int main(int ac, char **av, char **env)
+int main(int ac, char **env)
 {
-    if (ac != 1 || mysh() == 1)
+    if (ac != 1 || mysh(env) == 1)
         return 84;
     return 0;
 }
