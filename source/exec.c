@@ -18,7 +18,6 @@ void check_return(int *status, t_colors *colors)
     }
     else
         colors->current = colors->bold_green;
-    putput("%i ", *status);
 }
 
 int fork_exec(char **command, int *status, char **env)
