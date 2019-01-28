@@ -12,9 +12,9 @@ typedef struct s_colors t_colors;
 
 struct s_colors {
     char *current;
-    char *c_reset;
-    char *c_bold_red;
-    char *c_bold_green;
+    char *reset;
+    char *bold_red;
+    char *bold_green;
 };
 
 #endif

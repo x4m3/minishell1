@@ -16,10 +16,10 @@ void check_return(int *status, t_colors *colors)
 {
     if (WIFEXITED(*status)) {
         putput("segmentation fault (core dumped)\n");
-        colors->current = colors->c_bold_red;
+        colors->current = colors->bold_red;
     }
     else
-        colors->current = colors->c_bold_green;
+        colors->current = colors->bold_green;
 }
 
 int fork_exec(char **command, int *status, char **env)
@@ -41,7 +41,7 @@ char *prompt_get_input(t_colors *colors)
 {
     char *input_command;
 
-    putput("%s%s%s ", colors->current, "$", colors->c_reset);
+    putput("%s%s%s ", colors->current, "$", colors->reset);
     input_command = get_next_line(0);
     return input_command;
 }
@@ -74,10 +74,10 @@ t_colors *init_t_colors(void)
 
     if (!colors)
         return NULL;
-    colors->c_reset = "\033[0m";
-    colors->c_bold_red = "\033[1;31m";
-    colors->c_bold_green = "\033[1;32m";
-    colors->current = colors->c_bold_green;
+    colors->reset = "\033[0m";
+    colors->bold_red = "\033[1;31m";
+    colors->bold_green = "\033[1;32m";
+    colors->current = colors->bold_green;
     return colors;
 }
 
