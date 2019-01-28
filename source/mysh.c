@@ -64,9 +64,9 @@ int mysh(void)
     return 0;
 }
 
-int main(void)
+int main(int ac, char **av, char **env)
 {
-    if (mysh() == 1)
+    if (ac != 1 || mysh() == 1)
         return 84;
     return 0;
 }
