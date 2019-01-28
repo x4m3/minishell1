@@ -40,7 +40,7 @@ $(BUILD_DIR)/%.o: %.c $(INC)
 
 options:
 	@echo "  CC       $(CC)"
-	@echo "  CLFAGS   $(CFLAGS)"
+	@echo "  CFLAGS   $(CFLAGS)"
 	@echo "  LDFLAGS  $(LDFLAGS)"
 
 $(BINARY): $(OBJ)
