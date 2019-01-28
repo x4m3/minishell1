@@ -13,6 +13,7 @@ int putput(char *str, ...);
 int putput_err(char *str, ...);
 char **str_to_word_array(const char *str, const char sep);
 void free_char_arr(char **array);
+int str_compare(const char *s1, const char *s2);
 
 /* get_next_line */
 #ifndef READ_SIZE
