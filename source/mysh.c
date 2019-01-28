@@ -22,12 +22,7 @@ int loop(t_colors *colors, char **env)
         return -1;
     }
     command = str_to_word_array(input_command, ' ');
-    if (fork_exec(command, &status, env) != 0) {
-        perror("error! aborting.\n");
-        free_char_arr(command);
-        free(input_command);
-        return 1;
-    }
+    fork_exec(command, &status, env);
     check_return(&status, colors);
     free_char_arr(command);
     free(input_command);
