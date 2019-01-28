@@ -16,13 +16,16 @@ int loop(t_colors *colors, char **env)
     int status;
 
     input_command = prompt_get_input(colors);
-    if (input_command == NULL) {
+    if (input_command == NULL || !str_compare(input_command, "exit")) {
         putput("exit\n");
+        free(input_command);
         return -1;
     }
     command = str_to_word_array(input_command, ' ');
     if (fork_exec(command, &status, env) != 0) {
         perror("error! aborting.\n");
+        free_char_arr(command);
+        free(input_command);
         return 1;
     }
     check_return(&status, colors);
@@ -40,11 +43,12 @@ int mysh(char **env, t_colors *colors)
     return 0;
 }
 
-int main(int ac, char **env)
+int main(int ac, char **av, char **env)
 {
     t_colors *colors = init_t_colors();
     int ret = 0;
 
+    (void)av;
     ret = (ac != 1 || !colors || mysh(env, colors) != 0) ? 84 : 0;
     free(colors);
     if (ret == 84)

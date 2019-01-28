@@ -12,25 +12,29 @@
 
 void check_return(int *status, t_colors *colors)
 {
-    if (WIFEXITED(*status)) {
+    if (*status == 139) {
         putput("segmentation fault (core dumped)\n");
         colors->current = colors->bold_red;
     }
     else
         colors->current = colors->bold_green;
+    putput("%i ", *status);
 }
 
 int fork_exec(char **command, int *status, char **env)
 {
     pid_t parent = getpid();
     pid_t child = fork();
+    int wait_pid = 0;
 
+    *status = 0;
     if (parent != getpid()) {
-        if (execve(command[0], command, env) == -1) {
-            putput("command not found\n");
-            exit(0);
-        }
+        execve(command[0], command, env);
+        exit(0);
     }
-    waitpid(child, status, 0);
+    else {
+        while (*status == 0 && wait_pid != -1)
+            wait_pid = waitpid(child, status, WUNTRACED | WCONTINUED);
+    }
     return 0;
 }
