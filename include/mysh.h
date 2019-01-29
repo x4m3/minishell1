@@ -16,7 +16,7 @@ char *prompt_get_input(t_colors *colors, int *status);
 
 /* exec.c */
 void check_return(int *status, t_colors *colors);
-int fork_exec(char **command, int *status, char **env);
+int exec(char **command, int *status, char **env);
 
 /* builtins.c */
 

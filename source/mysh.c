@@ -22,10 +22,10 @@ int loop(t_colors *colors, char **env)
         return -1;
     }
     command = str_to_word_array(input_command, ' ');
-    fork_exec(command, &status, env);
+    free(input_command);
+    exec(command, &status, env);
     check_return(&status, colors);
     free_char_arr(command);
-    free(input_command);
     return 0;
 }
 
