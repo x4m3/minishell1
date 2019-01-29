@@ -42,7 +42,7 @@ int fork_exec(char **command, int *status, char **env)
 int exec(char **command, int *status, char **env)
 {
     if (command[0] == NULL)
-        // execute builtin exit
+        builtins_exit(command);
     for (int i = 0; i < list_builtins(); i++) {
         if (!str_compare(command[0], builtins_str[i]))
             return (*builtins_function[i])(command);

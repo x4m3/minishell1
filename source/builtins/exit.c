@@ -5,12 +5,13 @@
 ** 01100010 01101001 01101110 01100001 01110010 01111001
 */
 
+#include <stdlib.h> /* for exit */
 #include "library.h"
 #include "builtins.h"
 
 int builtins_exit(char **args)
 {
-    (void)args;
-    putput("\n");
-    return 0;
+    (args[0] == NULL) ? putput("\n") : 0;
+    free_char_arr(args);
+    exit(0);
 }
