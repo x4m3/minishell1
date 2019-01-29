@@ -7,11 +7,11 @@
 
 #include "builtins.h"
 
-const char *builtins_str[] = {
+const char *builtins_str[1] = {
     "exit"
 };
 
-int (*builtins_function[]) (char **) = {
+int (*builtins_function[1]) (char **) = {
     &builtins_exit
 };
 

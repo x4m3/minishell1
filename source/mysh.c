@@ -16,8 +16,8 @@ int loop(t_colors *colors, char **env)
     int status;
 
     input_command = prompt_get_input(colors, &status);
-    if (!input_command || !str_compare(input_command, "exit")) {
-        (!input_command) ? putput("\n") : 0;
+    if (!input_command) {
+        putput("\n");
         free(input_command);
         return -1;
     }

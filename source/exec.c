@@ -9,6 +9,7 @@
 #include <sys/wait.h> /* for waitpid */
 #include <stdlib.h> /* for exit */
 #include "mysh.h"
+#include "builtins.h"
 
 void check_return(int *status, t_colors *colors)
 {
@@ -42,9 +43,9 @@ int exec(char **command, int *status, char **env)
 {
     if (command[0] == NULL)
         // execute builtin exit
-    for (int i = 0; i < /* builtin list */; i++) {
-        if (!str_compare(command[0], /*builtin_str[i]*/))
-            return /* (*builtin_function[i])(command) */;
+    for (int i = 0; i < list_builtins(); i++) {
+        if (!str_compare(command[0], builtins_str[i]))
+            return (*builtins_function[i])(command);
     }
-    return fork_exec(command, &status, env);
+    return fork_exec(command, status, env);
 }
