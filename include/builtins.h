@@ -5,7 +5,12 @@
 ** vim-epitech made by x4m3
 */
 
-const char **builtins_str;
-int (**builtins_function) (char **);
+#ifndef BUILTINS_H
+#define BUILTINS_H
+
+const char *builtins_str[];
+int (*builtins_function[]) (char **);
 
 int builtins_exit(char **args);
+
+#endif

@@ -10,6 +10,7 @@
 
 #include "library.h"
 #include "colors.h"
+#include "builtins.h"
 
 /* prompt.c */
 char *prompt_get_input(t_colors *colors, int *status);
