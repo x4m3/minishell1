@@ -19,7 +19,3 @@ int list_builtins(void)
 {
     return sizeof(builtins_str) / sizeof(char *);
 }
-
-void builtins(void)
-{
-}
