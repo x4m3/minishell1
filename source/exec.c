@@ -14,7 +14,7 @@
 void check_return(int *status, t_colors *colors)
 {
     (*status == 139) ? putput("segmentation fault (core dumped)\n") : 0;
-    (*status == 1) ? putput("command not found\n") : 0;
+    (*status == 127) ? putput("command not found\n") : 0;
     colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
 }
 
@@ -28,7 +28,7 @@ int fork_exec(char **command, int *status, char **env)
     if (parent != getpid()) {
         if (execve(command[0], command, env) == -1) {
             exit(0);
-            *status = 1;
+            *status = 127;
             return 0;
         }
         exit(0);
