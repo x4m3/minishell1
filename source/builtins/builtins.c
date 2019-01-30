@@ -16,7 +16,7 @@ const char *builtins_str[] = {
     "help"
 };
 
-int (*builtins_function[]) (char **) = {
+int (*builtins_function[]) (char **, char **) = {
     &builtins_exit,
     &builtins_cd,
     &builtins_env,

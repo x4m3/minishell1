@@ -9,7 +9,7 @@
 #include "library.h"
 #include "builtins.h"
 
-int builtins_cd(char **args)
+int builtins_cd(char **args, char **env)
 {
     if (args[0] == NULL)
         // chdir(into $HOME);

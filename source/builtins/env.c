@@ -8,8 +8,9 @@
 #include "library.h"
 #include "builtins.h"
 
-int builtins_env(char **args)
+int builtins_env(char **args, char **env)
 {
-    putput("env\n");
+    for (int i = 0; env[i]; i++)
+        putput("%s\n", env[i]);
     return 0;
 }

@@ -8,7 +8,7 @@
 #include "library.h"
 #include "builtins.h"
 
-int builtins_help(char **args)
+int builtins_help(char **args, char **env)
 {
     (void)args;
     putput("help?\n");

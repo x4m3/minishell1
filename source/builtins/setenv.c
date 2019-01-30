@@ -8,7 +8,7 @@
 #include "library.h"
 #include "builtins.h"
 
-int builtins_setenv(char **args)
+int builtins_setenv(char **args, char **env)
 {
     putput("setenv\n");
     return 0;

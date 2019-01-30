@@ -8,7 +8,7 @@
 #include "library.h"
 #include "builtins.h"
 
-int builtins_unsetenv(char **args)
+int builtins_unsetenv(char **args, char **env)
 {
     putput("unsetenv\n");
     return 0;

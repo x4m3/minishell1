@@ -9,9 +9,11 @@
 #include "library.h"
 #include "builtins.h"
 
-int builtins_exit(char **args)
+int builtins_exit(char **args, char **env)
 {
+    (void)env;
     (args[0] == NULL) ? putput("\n") : 0;
     free_char_arr(args);
+    free_char_arr(env);
     exit(0);
 }
