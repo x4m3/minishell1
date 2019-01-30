@@ -8,11 +8,12 @@
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
-const char *builtins_str[1];
-int (*builtins_function[1])(char **);
+const char *builtins_str[6];
+int (*builtins_function[6])(char **);
 
 int list_builtins(void);
 
 int builtins_exit(char **args);
+int builtins_help(char **args);
 
 #endif

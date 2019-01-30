@@ -28,6 +28,7 @@ SRC = source/mysh.c \
       source/exec.c \
       source/builtins/builtins.c \
       source/builtins/exit.c \
+      source/builtins/help.c \
       library/len_str.c \
       library/putput.c \
       library/putput_err.c \

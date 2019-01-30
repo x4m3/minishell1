@@ -8,11 +8,21 @@
 #include "builtins.h"
 
 const char *builtins_str[] = {
-    "exit"
+    "exit",
+    "cd",
+    "env",
+    "setenv",
+    "unsetenv",
+    "help"
 };
 
 int (*builtins_function[]) (char **) = {
-    &builtins_exit
+    &builtins_exit,
+    &builtins_cd,
+    &builtins_env,
+    &builtins_setenv,
+    &builtins_unsetenv,
+    &builtins_help
 };
 
 int list_builtins(void)
