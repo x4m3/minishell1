@@ -28,6 +28,10 @@ SRC = source/mysh.c \
       source/exec.c \
       source/builtins/builtins.c \
       source/builtins/exit.c \
+      source/builtins/cd.c \
+      source/builtins/env.c \
+      source/builtins/setenv.c \
+      source/builtins/unsetenv.c \
       source/builtins/help.c \
       library/len_str.c \
       library/putput.c \
