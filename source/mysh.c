@@ -44,6 +44,8 @@ int main(int ac, char **av, char **env)
     int ret = 0;
 
     (void)av;
+    if (!colors)
+        return 84;
     ret = (ac != 1 || !colors || mysh(env, colors) != 0) ? 84 : 0;
     free(colors);
     if (ret == 84)
