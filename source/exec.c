@@ -5,7 +5,7 @@
 ** segmentation fault (core dumped)
 */
 
-#include <unistd.h> /* for execve */
+#include <unistd.h> /* for execve, access */
 #include <sys/wait.h> /* for waitpid */
 #include <stdlib.h> /* for exit */
 #include "mysh.h"
@@ -13,9 +13,21 @@
 
 void check_return(int *status, t_colors *colors)
 {
-    (*status == 139) ? putput("segmentation fault (core dumped)\n") : 0;
-    (*status == 1) ? putput("command not found\n") : 0;
+    (*status == 139) ? putput_err("segmentation fault (core dumped)\n") : 0;
+    if (*status == -1) {
+        putput_err("command not found\n");
+        *status = 1;
+    }
     colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
+}
+
+int check_command(char **command, int *status)
+{
+    if (access(command[0], F_OK | X_OK) == -1) {
+        *status = -1;
+        return 1;
+    }
+    return 0;
 }
 
 int fork_exec(char **command, int *status, char **env)
@@ -25,12 +37,10 @@ int fork_exec(char **command, int *status, char **env)
     int wait_pid = 0;
 
     *status = 0;
+    if (check_command(command, status) == 1)
+        return 1;
     if (parent != getpid()) {
-        if (execve(command[0], command, env) == -1) {
-            exit(0);
-            *status = 1;
-            return 0;
-        }
+        execve(command[0], command, env);
         exit(0);
     }
     else {
