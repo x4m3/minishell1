@@ -13,12 +13,8 @@
 
 void check_return(int *status, t_colors *colors)
 {
-    if (*status == 139) {
-        putput("segmentation fault (core dumped)\n");
-        colors->current = colors->bold_red;
-    }
-    else
-        colors->current = colors->bold_green;
+    (*status == 139) ? putput("segmentation fault (core dumped)\n") : 0;
+    colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
 }
 
 int fork_exec(char **command, int *status, char **env)
