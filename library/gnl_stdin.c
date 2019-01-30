@@ -28,7 +28,10 @@ char *gnl_stdin(void)
         free(buf);
         return NULL;
     }
-    str = malloc(sizeof(char) * (len_str_n(buf) + 1));
+    if (!(str = malloc(sizeof(char) * (len_str_n(buf) + 1)))) {
+        free(buf);
+        return NULL;
+    }
     for (; buf[i] != '\n'; i++)
         str[i] = buf[i];
     str[i] = '\0';
