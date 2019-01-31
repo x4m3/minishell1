@@ -33,12 +33,13 @@ int check_command(char **command, int *status)
 int fork_exec(char **command, int *status, char **env)
 {
     pid_t parent = getpid();
-    pid_t child = fork();
+    pid_t child;
     int wait_pid = 0;
 
     *status = 0;
     if (check_command(command, status) == 1)
         return 1;
+    child = fork();
     if (parent != getpid()) {
         execve(command[0], command, env);
         exit(0);
