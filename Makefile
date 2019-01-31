@@ -43,6 +43,8 @@ SRC = source/mysh.c \
       library/gnl_stdin.c \
       library/dup_char_arr.c \
       library/str_n_compare.c \
+      library/str_copy.c \
+      library/str_dup.c \
 
 all: options $(BINARY)
 

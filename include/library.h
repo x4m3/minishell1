@@ -17,5 +17,7 @@ int str_compare(const char *s1, const char *s2);
 char *gnl_stdin(void);
 char **dup_char_arr(char **src, int nb_lines);
 int str_n_compare(const char *s1, const char *s2, const int n);
+char *str_copy(char *dest, const char *src);
+char *str_dup(const char *src);
 
 #endif

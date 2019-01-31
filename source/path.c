@@ -5,7 +5,6 @@
 ** no, real programmers use cat
 */
 
-#include <stdlib.h> /* for malloc */
 #include "mysh.h"
 
 char *get_path(char **env)
@@ -14,6 +13,7 @@ char *get_path(char **env)
 
     for (int i = 0; env[i]; i++) {
         if (!str_n_compare(env[i], "PATH=", 5))
-            // malloc and copy env[i] in str
+            str = str_dup(env[i]);
     }
+    return str;
 }
