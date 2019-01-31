@@ -11,6 +11,7 @@
 int builtins_help(char **args, char **env)
 {
     (void)args;
+    (void)env;
     putput("help?\n");
     putput("good luck :)\n");
     return 0;
