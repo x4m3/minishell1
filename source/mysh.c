@@ -24,7 +24,7 @@ int loop(t_colors *colors, char **env)
     }
     command = str_to_word_array(input_command, ' ');
     free(input_command);
-    if (command[0][1] == '\0') {
+    if (*command[0] == '\0') {
         free_char_arr(command);
         return 0;
     }
