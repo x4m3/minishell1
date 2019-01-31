@@ -16,6 +16,7 @@ int count_lines_arr(char **arr)
 }
 
 /* if nb_lines is unknown, for example if not using ac, set nb_lines to 0 */
+
 char **dup_char_arr(char **src, int nb_lines)
 {
     int i = 0;
