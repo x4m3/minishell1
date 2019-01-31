@@ -15,7 +15,8 @@
 
 void check_return(int *status, t_colors *colors)
 {
-    (*status) ? putput_err("%s\n", strsignal(WTERMSIG(*status))) : 0;
+    (*status == 139) ? putput_err("%s\n", strsignal(WTERMSIG(*status))) : 0;
+    (*status == 136) ? putput_err("%s\n", strsignal(WTERMSIG(*status))) : 0;
     if (*status == -1) {
         putput_err("Command not found.\n");
         *status = 1;
