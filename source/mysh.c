@@ -14,9 +14,8 @@ int loop(t_colors *colors, char **env)
 {
     char *input_command;
     char **command;
-    int status;
+    static int status = 0;
 
-    (status == 39) ? status = 0 : 0;
     input_command = prompt_get_input(colors, &status);
     if (!input_command) {
         (isatty(0) == 1) ? putput("\n") : 0;
