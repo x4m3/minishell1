@@ -39,9 +39,12 @@ int mysh(char **env, t_colors *colors)
     char **my_env = dup_char_arr(env, 0);
 
     while (1) {
-        if (loop(colors, my_env) == -1)
+        if (loop(colors, my_env) == -1) {
+            free_char_arr(my_env);
             return 0;
+        }
     }
+    free_char_arr(my_env);
     return 0;
 }
 
