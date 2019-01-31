@@ -26,6 +26,7 @@ int check_command(char **command, int *status)
 {
     if (access(command[0], F_OK | X_OK) == -1) {
         *status = -1;
+        putput_err("%s: ", command[0]);
         return 1;
     }
     return 0;
