@@ -13,10 +13,10 @@
 
 void check_return(int *status, t_colors *colors)
 {
-    (*status == 139) ? putput_err("Segmentation fault (core dumped)\n") : 0;
-    (*status == 136) ? putput_err("Floating exception (core dumped)\n") : 0;
+    (*status == 139) ? putput("Segmentation fault (core dumped)\n") : 0;
+    (*status == 136) ? putput("Floating exception (core dumped)\n") : 0;
     if (*status == -1) {
-        putput_err("Command not found.\n");
+        putput("Command not found.\n");
         *status = 1;
     }
     colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
@@ -26,7 +26,7 @@ int check_command(char **command, int *status)
 {
     if (access(command[0], F_OK | X_OK) == -1) {
         *status = -1;
-        putput_err("%s: ", command[0]);
+        putput("%s: ", command[0]);
         return 1;
     }
     return 0;
