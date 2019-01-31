@@ -14,6 +14,7 @@
 void check_return(int *status, t_colors *colors)
 {
     (*status == 139) ? putput_err("Segmentation fault (core dumped)\n") : 0;
+    (*status == 136) ? putput_err("Floating exception (core dumped)\n") : 0;
     if (*status == -1) {
         putput_err("Command not found.\n");
         *status = 1;
