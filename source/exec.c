@@ -8,13 +8,14 @@
 #include <unistd.h> /* for execve, access */
 #include <sys/wait.h> /* for waitpid */
 #include <stdlib.h> /* for exit */
+#include <string.h> /* for strsignal */
+#include <signal.h> /* for WTERMSIG */
 #include "mysh.h"
 #include "builtins.h"
 
 void check_return(int *status, t_colors *colors)
 {
-    (*status == 139) ? putput_err("Segmentation fault (core dumped)\n") : 0;
-    (*status == 136) ? putput_err("Floating exception (core dumped)\n") : 0;
+    (*status) ? putput_err("%s\n", strsignal(WTERMSIG(*status))) : 0;
     if (*status == -1) {
         putput_err("Command not found.\n");
         *status = 1;
