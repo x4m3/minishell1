@@ -13,9 +13,9 @@
 
 void check_return(int *status, t_colors *colors)
 {
-    (*status == 139) ? putput_err("segmentation fault (core dumped)\n") : 0;
+    (*status == 139) ? putput_err("Segmentation fault (core dumped)\n") : 0;
     if (*status == -1) {
-        putput_err("command not found\n");
+        putput_err("Command not found.\n");
         *status = 1;
     }
     colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
