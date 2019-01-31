@@ -5,6 +5,7 @@
 ** csfml is the best thing ever
 */
 
+#include <unistd.h> /* for isatty */
 #include "mysh.h"
 
 void disp_prompt(t_colors *colors, int status)
@@ -20,7 +21,8 @@ char *prompt_get_input(t_colors *colors, int *status)
 {
     char *input_command;
 
-    disp_prompt(colors, *status);
+    if (isatty(0) == 1)
+        disp_prompt(colors, *status);
     input_command = gnl_stdin();
     return input_command;
 }

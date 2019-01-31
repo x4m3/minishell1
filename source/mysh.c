@@ -7,6 +7,7 @@
 
 #include <stdio.h> /* for perror */
 #include <stdlib.h> /* for free */
+#include <unistd.h> /* for isatty */
 #include "mysh.h"
 
 int loop(t_colors *colors, char **env)
@@ -15,14 +16,19 @@ int loop(t_colors *colors, char **env)
     char **command;
     int status;
 
+    (status == 39) ? status = 0 : 0;
     input_command = prompt_get_input(colors, &status);
     if (!input_command) {
-        putput("\n");
+        (isatty(0) == 1) ? putput("\n") : 0;
         free(input_command);
         return -1;
     }
     command = str_to_word_array(input_command, ' ');
     free(input_command);
+    if (command[0][1] == '\0') {
+        free_char_arr(command);
+        return 0;
+    }
     exec(command, &status, env);
     check_return(&status, colors);
     free_char_arr(command);
@@ -31,8 +37,10 @@ int loop(t_colors *colors, char **env)
 
 int mysh(char **env, t_colors *colors)
 {
+    char **my_env = dup_char_arr(env, 0);
+
     while (1) {
-        if (loop(colors, env) == -1)
+        if (loop(colors, my_env) == -1)
             return 0;
     }
     return 0;
