@@ -16,5 +16,6 @@ void free_char_arr(char **array);
 int str_compare(const char *s1, const char *s2);
 char *gnl_stdin(void);
 char **dup_char_arr(char **src, int nb_lines);
+int str_n_compare(const char *s1, const char *s2, const int n);
 
 #endif

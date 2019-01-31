@@ -19,6 +19,6 @@ void check_return(int *status, t_colors *colors);
 int exec(char **command, int *status, char **env);
 
 /* path.c */
-void get_path(char **env);
+char *get_path(char **env);
 
 #endif

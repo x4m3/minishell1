@@ -5,12 +5,15 @@
 ** no, real programmers use cat
 */
 
+#include <stdlib.h> /* for malloc */
 #include "mysh.h"
 
-void get_path(char **env)
+char *get_path(char **env)
 {
+    char *str;
+
     for (int i = 0; env[i]; i++) {
-        if (!str_compare(env[i], "PATH="))
-            putput("%s", env[i]);
+        if (!str_n_compare(env[i], "PATH=", 5))
+            // malloc and copy env[i] in str
     }
 }
