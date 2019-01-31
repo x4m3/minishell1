@@ -18,6 +18,7 @@ char *prompt_get_input(t_colors *colors, int *status);
 void check_return(int *status, t_colors *colors);
 int exec(char **command, int *status, char **env);
 
-/* builtins.c */
+/* path.c */
+void get_path(char **env);
 
 #endif

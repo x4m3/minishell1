@@ -26,6 +26,7 @@ SRC = source/mysh.c \
       source/init_t_colors.c \
       source/prompt.c \
       source/exec.c \
+      source/path.c \
       source/builtins/builtins.c \
       source/builtins/exit.c \
       source/builtins/cd.c \

@@ -63,5 +63,6 @@ int exec(char **command, int *status, char **env)
         if (!str_compare(command[0], builtins_str[i]))
             return (*builtins_function[i])(command, env);
     }
+    get_path(env);
     return fork_exec(command, status, env);
 }
