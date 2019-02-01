@@ -21,5 +21,6 @@ int exec(char **command, int *status, char **env);
 /* path.c */
 char *get_path(char **env);
 char **move_path_pointer(char **path);
+char *full_path_command(char *path, char *command);
 
 #endif

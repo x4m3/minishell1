@@ -58,6 +58,7 @@ int fork_exec(char **command, int *status, char **env)
 int exec(char **command, int *status, char **env)
 {
     char **path;
+    char *dup_command = command[0];
 
     if (command[0] == NULL)
         builtins_exit(command, env);
@@ -65,6 +66,10 @@ int exec(char **command, int *status, char **env)
         if (!str_compare(command[0], builtins_str[i]))
             return (*builtins_function[i])(command, env);
     }
+    if (check_command(command, status) == 0)
+        return fork_exec(command, status, env);
     path = move_path_pointer(str_to_word_array(get_path(env), ':'));
+    command[0] = full_path_command(path[0], command[0]);
+    free(dup_command);
     return fork_exec(command, status, env);
 }
