@@ -57,12 +57,15 @@ int fork_exec(char **command, int *status, char **env)
 
 int exec(char **command, int *status, char **env)
 {
+    char **path;
+
     if (command[0] == NULL)
         builtins_exit(command, env);
     for (int i = 0; i < list_builtins(); i++) {
         if (!str_compare(command[0], builtins_str[i]))
             return (*builtins_function[i])(command, env);
     }
-    get_path(env);
+    path = str_to_word_array(get_path(env), ':');
+    move_path_pointer(path);
     return fork_exec(command, status, env);
 }

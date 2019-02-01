@@ -7,6 +7,14 @@
 
 #include "mysh.h"
 
+void move_path_pointer(char **path)
+{
+    int i = 0;
+
+    for (; path[0][i] && path[0][i] != '='; i++);
+    path[0] += i + 1;
+}
+
 char *get_path(char **env)
 {
     char *str;
