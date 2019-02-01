@@ -65,7 +65,6 @@ int exec(char **command, int *status, char **env)
         if (!str_compare(command[0], builtins_str[i]))
             return (*builtins_function[i])(command, env);
     }
-    path = str_to_word_array(get_path(env), ':');
-    move_path_pointer(path);
+    path = move_path_pointer(str_to_word_array(get_path(env), ':'));
     return fork_exec(command, status, env);
 }

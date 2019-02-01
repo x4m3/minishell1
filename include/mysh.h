@@ -20,6 +20,6 @@ int exec(char **command, int *status, char **env);
 
 /* path.c */
 char *get_path(char **env);
-void move_path_pointer(char **path);
+char **move_path_pointer(char **path);
 
 #endif
