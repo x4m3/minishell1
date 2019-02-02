@@ -72,11 +72,9 @@ int exec(char **command, int *status, char **env)
             return fork_exec(command, status, env);
     }
     command[0] = dup_command;
-    free(dup_command);
     if (check_command(command, status) == 0)
         return fork_exec(command, status, env);
     putput_err("%s: ", command[0]);
-    free_char_arr(path);
     *status = -1;
     return 0;
 }
