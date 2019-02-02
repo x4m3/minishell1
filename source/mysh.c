@@ -19,11 +19,9 @@ int loop(t_colors *colors, char **env)
     input_command = prompt_get_input(colors, &status);
     if (!input_command) {
         (isatty(0) == 1) ? putput("\n") : 0;
-        free(input_command);
         return -1;
     }
     command = str_to_word_array(input_command, ' ');
-    free(input_command);
     if (*command[0] == '\0') {
         free_char_arr(command);
         return 0;
@@ -57,7 +55,6 @@ int main(int ac, char **av, char **env)
     if (!colors)
         return 84;
     ret = (ac != 1 || !colors || mysh(env, colors) != 0) ? 84 : 0;
-    free(colors);
     if (ret == 84)
         return 84;
     return 0;

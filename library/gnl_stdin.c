@@ -25,16 +25,13 @@ char *gnl_stdin(void)
     int i = 0;
 
     if (getline(&buf, &len, stdin) == -1) {
-        free(buf);
         return NULL;
     }
     if (!(str = malloc(sizeof(char) * (len_str_n(buf) + 1)))) {
-        free(buf);
         return NULL;
     }
     for (; buf[i] != '\n'; i++)
         str[i] = buf[i];
     str[i] = '\0';
-    free(buf);
     return str;
 }
