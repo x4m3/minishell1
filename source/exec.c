@@ -10,6 +10,7 @@
 #include <stdlib.h> /* for exit */
 #include <string.h> /* for strsignal */
 #include <signal.h> /* for WTERMSIG */
+#include <errno.h> /* for errno */
 #include "mysh.h"
 #include "builtins.h"
 
@@ -43,6 +44,8 @@ int fork_exec(char **command, int *status, char **env)
     child = fork();
     if (parent != getpid()) {
         execve(command[0], command, env);
+        if (errno == ENOEXEC)
+            putput("%s: Exec format error. Wrong Architecture.\n", command[0]);
         exit(0);
     }
     else {
