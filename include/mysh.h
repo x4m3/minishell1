@@ -15,7 +15,7 @@
 char *prompt_get_input(t_colors *colors, int *status);
 
 /* exec.c */
-void check_return(int *status, t_colors *colors);
+void check_return(int *status, t_colors *colors, char *command);
 int exec(char **command, int *status, char **env);
 
 /* path.c */

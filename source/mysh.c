@@ -27,7 +27,7 @@ int loop(t_colors *colors, char **env)
         return 0;
     }
     exec(command, &status, env);
-    check_return(&status, colors);
+    check_return(&status, colors, command[0]);
     free_char_arr(command);
     return 0;
 }

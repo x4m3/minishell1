@@ -14,15 +14,25 @@
 #include "mysh.h"
 #include "builtins.h"
 
-void check_return(int *status, t_colors *colors)
+void check_return(int *status, t_colors *colors, char *command)
 {
-    (*status == 139) ? putput_err("%s\n", strsignal(WTERMSIG(*status))) : 0;
-    (*status == 136) ? putput_err("%s\n", strsignal(WTERMSIG(*status))) : 0;
+    colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
     if (*status == -1) {
         putput_err("Command not found.\n");
         *status = 1;
+        return;
     }
-    colors->current = (!(*status)) ? colors->bold_green : colors->bold_red;
+    if (!WIFSIGNALED(*status))
+        return;
+    if (WTERMSIG(*status) == 8) {
+        putput("Floating exception\n");
+        return;
+    }
+    if (WTERMSIG(*status) == 11) {
+        putput("Segmentation fault\n");
+        return;
+    }
+    putput("%s: %s.\n", command, strsignal(WTERMSIG(*status)));
 }
 
 int check_command(char **command, int *status)
