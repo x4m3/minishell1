@@ -49,13 +49,13 @@ int mysh(char **env, t_colors *colors)
 int main(int ac, char **av, char **env)
 {
     t_colors *colors = init_t_colors();
-    int ret = 0;
 
-    (void)av;
     if (!colors)
         return 84;
-    ret = (ac != 1 || !colors || mysh(env, colors) != 0) ? 84 : 0;
-    if (ret == 84)
+    if (ac != 1) {
+        putput_err("%s: no arguments needed\n", av[0]);
         return 84;
+    }
+    mysh(env, colors);
     return 0;
 }
